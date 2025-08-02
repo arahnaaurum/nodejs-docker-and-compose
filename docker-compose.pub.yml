@@ -1,0 +1,22 @@
+services:
+  backend:
+    container_name: backend-opti
+    image: arahnaaurum/backend-opti:1.0.0
+    env_file: .env
+    ports:
+      - '4000:3000'
+    depends_on:
+      - postgres
+    restart: always
+  frontend:
+    container_name: frontend-opti
+    image: arahnaaurum/frontend-opti:1.0.0
+    env_file: .env
+    ports:
+      - '8081:80'
+    restart: always
+  postgres:
+    container_name: postgres
+    image: postgres:14-alpine
+    env_file: .env
+    restart: always
